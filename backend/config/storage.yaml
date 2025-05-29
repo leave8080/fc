@@ -1,0 +1,84 @@
+# 生产环境存储配置
+storage:
+  # 主存储（元数据）
+  primary:
+    type: "postgresql"
+    host: "${DB_HOST}"
+    port: 5432
+    database: "cloudfunction"
+    username: "${DB_USER}"
+    password: "${DB_PASSWORD}"
+    ssl_mode: "require"
+    max_conns: 20
+    max_idle_time: 300
+
+  # 缓存存储
+  cache:
+    type: "redis"
+    host: "${REDIS_HOST}"
+    port: 6379
+    password: "${REDIS_PASSWORD}"
+    database: 0
+    max_conns: 10
+    ttl: 3600 # 1小时
+
+  # 对象存储（代码文件）
+  object:
+    type: "s3"
+    endpoint: "${S3_ENDPOINT}"
+    region: "${S3_REGION}"
+    bucket: "cloudfunction-code"
+    access_key: "${S3_ACCESS_KEY}"
+    secret_key: "${S3_SECRET_KEY}"
+
+  # 日志存储
+  logs:
+    type: "elasticsearch"
+    hosts:
+      - "${ES_HOST1}:9200"
+      - "${ES_HOST2}:9200"
+    index: "cloudfunction-logs"
+    username: "${ES_USER}"
+    password: "${ES_PASSWORD}"
+
+# 不同环境配置
+environments:
+  development:
+    storage:
+      primary:
+        type: "sqlite"
+        database: "./data/functions.db"
+      cache:
+        type: "memory"
+      object:
+        type: "local"
+        path: "./data/code"
+
+  staging:
+    storage:
+      primary:
+        type: "postgresql"
+        host: "staging-db.example.com"
+        database: "cloudfunction_staging"
+      cache:
+        type: "redis"
+        host: "staging-redis.example.com"
+
+  production:
+    storage:
+      primary:
+        type: "postgresql"
+        host: "prod-db-cluster.example.com"
+        database: "cloudfunction_prod"
+        ssl_mode: "require"
+        max_conns: 50
+      cache:
+        type: "redis_cluster"
+        hosts:
+          - "redis-1.example.com:6379"
+          - "redis-2.example.com:6379"
+          - "redis-3.example.com:6379"
+      object:
+        type: "s3"
+        bucket: "prod-cloudfunction-code"
+        region: "us-east-1" 

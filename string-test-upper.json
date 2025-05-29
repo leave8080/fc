@@ -1,0 +1,10 @@
+{
+  "event": {
+    "text": "hello world from go cloud function",
+    "operation": "upper"
+  },
+  "context": {
+    "user": "开发者",
+    "request_id": "text_002"
+  }
+} 

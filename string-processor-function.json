@@ -1,0 +1,12 @@
+{
+  "name": "string-processor",
+  "runtime": "go", 
+  "handler": "processText",
+  "code": "import \"strings\"\n\nfunc processText(event interface{}, context map[string]string) interface{} {\n    eventMap, ok := event.(map[string]interface{})\n    if !ok {\n        return map[string]interface{}{\"error\": \"Invalid event format\"}\n    }\n\n    text, hasText := eventMap[\"text\"].(string)\n    operation, hasOp := eventMap[\"operation\"].(string)\n    \n    if !hasText {\n        return map[string]interface{}{\"error\": \"Missing text field\"}\n    }\n    \n    if !hasOp {\n        operation = \"info\"\n    }\n\n    var result interface{}\n    switch operation {\n    case \"upper\":\n        result = strings.ToUpper(text)\n    case \"lower\":\n        result = strings.ToLower(text)\n    case \"title\":\n        result = strings.Title(text)\n    case \"reverse\":\n        runes := []rune(text)\n        for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {\n            runes[i], runes[j] = runes[j], runes[i]\n        }\n        result = string(runes)\n    case \"words\":\n        result = strings.Fields(text)\n    case \"info\":\n        words := strings.Fields(text)\n        result = map[string]interface{}{\n            \"length\": len(text),\n            \"word_count\": len(words),\n            \"has_numbers\": strings.ContainsAny(text, \"0123456789\"),\n            \"first_word\": func() string {\n                if len(words) > 0 {\n                    return words[0]\n                }\n                return \"\"\n            }(),\n        }\n    default:\n        return map[string]interface{}{\"error\": \"Unsupported operation\"}\n    }\n\n    return map[string]interface{}{\n        \"original\": text,\n        \"operation\": operation,\n        \"result\": result,\n        \"processed_by\": context[\"user\"],\n    }\n}",
+  "timeout": 30,
+  "memory": 128,
+  "environment": {
+    "SERVICE_NAME": "StringProcessor",
+    "VERSION": "1.0"
+  }
+} 

@@ -1,0 +1,9 @@
+{
+  "event": {
+    "text": "hello world! 这是一个测试 123 abc xyz"
+  },
+  "context": {
+    "user": "Python开发者",
+    "request_id": "uppercase_001"
+  }
+} 

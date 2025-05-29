@@ -1,0 +1,54 @@
+# 云函数平台配置文件
+
+# 服务器配置
+server:
+  host: "0.0.0.0"
+  port: 8080
+  mode: "debug"  # debug, release
+  read_timeout: 30
+  write_timeout: 30
+  idle_timeout: 120
+
+# 存储配置
+storage:
+  type: "file"  # file, postgresql, mongodb
+  data_dir: "./data"
+  max_conns: 10
+  max_idle_time: 300
+
+# 运行时配置
+runtime:
+  work_dir: "./functions"
+  max_concurrent: 10
+  default_timeout: 30
+  default_memory: 128
+  enabled_runtimes:
+    - "go"
+    - "nodejs" 
+    - "python"
+  runtime_paths:
+    go: "go"
+    nodejs: "node"
+    python: "python3"
+  max_code_size: 1024  # KB
+  allowed_packages: []
+
+# 安全配置
+security:
+  enable_auth: false
+  jwt_expiry: 86400  # 24小时
+  allowed_origins:
+    - "*"
+  rate_limit: 100
+  enable_https: false
+
+# 监控配置
+monitor:
+  enable_metrics: true
+  metrics_path: "/metrics"
+  enable_profiling: false
+  profiling_path: "/debug/pprof"
+  log_level: "info"  # debug, info, warn, error
+  log_format: "json"  # json, text
+  log_output: "stdout"  # stdout, file
+  enable_tracing: false 

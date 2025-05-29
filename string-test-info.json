@@ -1,0 +1,10 @@
+{
+  "event": {
+    "text": "Hello World 123 这是一个测试文本",
+    "operation": "info"
+  },
+  "context": {
+    "user": "文本分析师",
+    "request_id": "text_001"
+  }
+} 
