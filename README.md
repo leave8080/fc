@@ -2,6 +2,26 @@
 
 一个现代化的云函数平台，支持多种运行时，具备完整的监控、日志和管理功能。
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Go Version](https://img.shields.io/badge/go-%3E%3D1.19-blue.svg)
+![Node Version](https://img.shields.io/badge/node-%3E%3D16-green.svg)
+
+## 📸 产品截图
+
+### 🏠 主页界面
+![CloudFunc主页](./20250530113023.jpg)
+*云函数平台主页，提供简洁的操作入口*
+
+### ⚡ 创建函数
+![创建函数](./20250530113102.jpg)
+*直观的函数创建界面，支持多种运行时*
+
+### 📋 函数管理
+![函数列表](./20250530113142.jpg)
+*完整的函数管理界面，支持编辑、执行和监控*
+
+---
+
 ## 🚀 功能特性
 
 ### ✨ 核心功能
@@ -63,6 +83,8 @@ testChat/
 
 ## 🚦 快速开始
 
+> 💡 **体验Demo**: 查看上方产品截图了解平台功能，或按以下步骤快速部署
+
 ### 环境要求
 
 - **Go**: 1.19+
@@ -73,7 +95,7 @@ testChat/
 
 ```bash
 git clone <repository-url>
-cd testChat
+cd fc
 ```
 
 ### 2. 一键构建
@@ -99,9 +121,20 @@ npm run dev
 
 ### 4. 访问应用
 
-- **管理界面**: http://localhost:5173
-- **API文档**: http://localhost:8080/api/health
-- **监控指标**: http://localhost:8080/api/metrics
+- **🌐 管理界面**: http://localhost:5173
+- **📋 API文档**: http://localhost:8080/api/health
+- **📊 监控指标**: http://localhost:8080/api/metrics
+
+### 5. 快速测试
+
+创建你的第一个云函数：
+
+1. 访问管理界面 http://localhost:5173
+2. 点击 "创建新函数" 按钮
+3. 选择运行时（Go/Node.js/Python）
+4. 编写函数代码或使用示例模板
+5. 点击 "创建函数" 完成部署
+6. 在函数列表中测试执行
 
 ## 🔧 配置说明
 
@@ -254,6 +287,39 @@ spec:
 
 ---
 
+## ⭐ 项目特色
+
+### 🚀 为什么选择我们的云函数平台？
+
+- **🎯 简单易用**: 直观的Web界面，零配置快速上手
+- **⚡ 高性能**: 毫秒级响应，支持高并发执行
+- **🔧 灵活扩展**: 插件化架构，轻松添加新功能
+- **💾 数据安全**: 本地化部署，数据完全可控
+- **📱 响应式设计**: 完美适配桌面和移动设备
+- **🛠️ 开发友好**: 丰富的API接口和详细文档
+
+### 🏗️ 技术栈
+
+**后端技术**
+- Go 1.19+ (Gin框架)
+- 多运行时支持 (Go/Node.js/Python)
+- JSON文件存储 (支持扩展数据库)
+- RESTful API设计
+
+**前端技术**
+- Vue.js 3.x
+- Vite构建工具
+- 响应式UI设计
+- 现代化交互体验
+
+**部署方式**
+- Docker容器化
+- Kubernetes支持
+- 一键脚本部署
+- 跨平台兼容
+
+---
+
 ## 🎯 路线图
 
 - [ ] **数据库支持**: PostgreSQL、MongoDB
@@ -263,3 +329,11 @@ spec:
 - [ ] **分布式执行**: 多节点负载均衡
 - [ ] **CI/CD集成**: GitHub Actions
 - [ ] **更多运行时**: Java、.NET、Rust
+
+---
+
+<div align="center">
+
+**🌟 如果这个项目对你有帮助，请给一个Star⭐！**
+
+</div>

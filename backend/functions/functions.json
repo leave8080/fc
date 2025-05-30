@@ -1,26 +1,14 @@
 [
   {
-    "id": "fn_1748509982271572000",
-    "name": "uppercase-converter",
-    "runtime": "python",
-    "code": "def convert_to_uppercase(event, context):\\n    \\\"\\\"\\\"\\n    将输入文本转换为大写\\n    \\\"\\\"\\\"\\n    # 检查输入事件是否包含text字段\\n    if not isinstance(event, dict):\\n        return {\\n            \\\"error\\\": \\\"输入必须是字典格式\\\",\\n            \\\"success\\\": False\\n        }\\n    \\n    text = event.get('text', '')\\n    \\n    if not text:\\n        return {\\n            \\\"error\\\": \\\"缺少text字段或text为空\\\",\\n            \\\"success\\\": False\\n        }\\n    \\n    # 转换为大写\\n    uppercase_text = text.upper()\\n    \\n    # 统计信息\\n    original_length = len(text)\\n    char_count = len([c for c in text if c.isalpha()])\\n    digit_count = len([c for c in text if c.isdigit()])\\n    space_count = text.count(' ')\\n    \\n    return {\\n        \\\"success\\\": True,\\n        \\\"original_text\\\": text,\\n        \\\"uppercase_text\\\": uppercase_text,\\n        \\\"statistics\\\": {\\n            \\\"total_length\\\": original_length,\\n            \\\"letter_count\\\": char_count,\\n            \\\"digit_count\\\": digit_count,\\n            \\\"space_count\\\": space_count\\n        },\\n        \\\"processed_by\\\": f\\\"Python函数 (用户: {context.get('user', 'unknown')})\\\",\\n        \\\"operation\\\": \\\"大写转换\\\"\\n    }",
-    "handler": "convert_to_uppercase",
-    "environment": {},
-    "timeout": 30,
-    "memory": 128,
-    "created_at": "2025-05-29T17:13:02.271592+08:00",
-    "updated_at": "2025-05-29T17:13:02.271592+08:00"
-  },
-  {
-    "id": "fn_1748510072417720000",
-    "name": "xxx",
+    "id": "fn_1748575613798741000",
+    "name": "方法",
     "runtime": "go",
-    "code": "xxx",
-    "handler": "xxx",
+    "code": "func Handler(ctx context.Context, event interface{}) interface{} {\n    // 处理事件数据\n    if event == nil {\n        return map[string]interface{}{\n            \"message\": \"Hello, World!\",\n        }\n    }\n    \n    // 尝试获取name字段\n    if eventMap, ok := event.(map[string]interface{}); ok {\n        if name, exists := eventMap[\"name\"]; exists {\n            return map[string]interface{}{\n                \"message\": fmt.Sprintf(\"Hello, %v!\", name),\n            }\n        }\n    }\n    \n    return map[string]interface{}{\n        \"message\": \"Hello, World!\",\n        \"received\": event,\n    }\n}",
+    "handler": "Handler",
     "environment": {},
     "timeout": 30,
     "memory": 128,
-    "created_at": "2025-05-29T17:14:32.417722+08:00",
-    "updated_at": "2025-05-29T17:14:32.417722+08:00"
+    "created_at": "2025-05-30T11:26:53.798747+08:00",
+    "updated_at": "2025-05-30T11:26:53.798747+08:00"
   }
 ]

@@ -1,8 +1,0 @@
-{
-  "name": "hello-go",
-  "runtime": "go",
-  "handler": "handler",
-  "code": "func handler(event interface{}, context map[string]string) interface{} {\n    return map[string]interface{}{\n        \"message\": \"Hello from Go Cloud Function!\",\n        \"event\": event,\n        \"user\": context[\"user\"],\n    }\n}",
-  "timeout": 30,
-  "memory": 128
-} 
